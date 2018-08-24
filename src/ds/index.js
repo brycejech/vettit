@@ -56,9 +56,39 @@ async function userExists(obj){
     }
 }
 
+async function getUserByEmail(email){
+    try{
+        const result = await db.query(sql.getUserByEmail, [email]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getUserByUsername(username){
+    try{
+        const result = await db.query(sql.getUserByUsername, [username]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getUserByUuid(uuid){
+    try{
+        const result = await db.query(sql.getUserByUuid, [uuid]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
 const dataStore = {
     registerUser,
-    userExists
+    userExists,
+    getUserByEmail,
+    getUserByUsername,
+    getUserByUuid
 }
 
 

@@ -14,6 +14,18 @@ const queries = [
     {
         name: 'emailExists',
         script: 'email-exists.sql'
+    },
+    {
+        name: 'getUserByEmail',
+        script: 'get-user-by-email.sql'
+    },
+    {
+        name: 'getUserByUsername',
+        script: 'get-user-by-username.sql'
+    },
+    {
+        name: 'getUserByUuid',
+        script: 'get-user-by-uuid.sql'
     }
 ]
 

@@ -41,7 +41,32 @@ async function register(obj){
     }
 }
 
+async function getByEmail(email){
+    try{
+        const result = await ds.getUserByEmail(email);
 
+        return new User(result);
+    }
+    catch(e){ return e }
+}
+
+async function getByUsername(username){
+    try{
+        const result = await ds.getUserByUsername(username);
+
+        return new User(result);
+    }
+    catch(e){ return e }
+}
+
+async function getByUuid(uuid){
+    try{
+        const result = await ds.getUserByUuid(uuid);
+
+        return new User(result);
+    }
+    catch(e){ return e }
+}
 
 
 /*
@@ -62,5 +87,8 @@ function _nonce(){
 }
 
 module.exports = {
-    register
+    register,
+    getByEmail,
+    getByUsername,
+    getByUuid
 }
