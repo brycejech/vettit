@@ -9,9 +9,9 @@ CREATE TABLE color
 );
 
 
--- Add some basic colors
+-- ADD DEFAULT COLORS
 INSERT INTO color
-(name, hex)
+(name, code)
 
 VALUES
 ('red',           '#db2c3e'),
@@ -26,7 +26,7 @@ VALUES
 ('light-blue',    '#7fdbff'),
 ('blue',          '#0366d6'),
 ('dark-blue',     '#164f89'),
-('navy'),         '#001f3f'),
+('navy',          '#001f3f'),
 ('purple',        '#7c40d6'),
 ('bright-purple', '#b10dc9'),
 ('pink',          '#f27dd7'),
