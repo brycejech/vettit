@@ -7,5 +7,5 @@ CREATE TABLE post_vote
     value    int  NOT NULL,
     author   int  NOT NULL   REFERENCES account(id),
 
-    created  timestamp with time zone DEFAULT (now() at time zone 'utc')
+    created  timestamp with time zone NOT NULL DEFAULT (now() at time zone 'utc')
 );

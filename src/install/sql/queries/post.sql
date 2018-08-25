@@ -11,6 +11,6 @@ CREATE TABLE post
     state        int        NOT NULL  REFERENCES state(id) DEFAULT 0,
     modified_by  int                  REFERENCES account(id),
 
-    created      timestamp with time zone DEFAULT (now() at time zone 'utc'),
+    created      timestamp with time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     modified     timestamp with time zone
 );
