@@ -19,4 +19,4 @@ VALUES
 ('Pending Approval'),
 ('Rejected'),
 ('Stalled'),
-('Resolved'),
+('Resolved');
