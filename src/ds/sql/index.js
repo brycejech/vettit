@@ -6,69 +6,69 @@ const queries = [
     // Users
     {
         name:   'registerUser',
-        script: 'register-user.sql'
+        script: 'account-add.sql'
     },
     {
         name:   'usernameExists',
-        script: 'username-exists.sql'
+        script: 'account-exists-username.sql'
     },
     {
         name:   'emailExists',
-        script: 'email-exists.sql'
+        script: 'account-exists-email.sql'
     },
     {
         name:   'getUserByEmail',
-        script: 'get-user-by-email.sql'
+        script: 'account-get-by-email.sql'
     },
     {
         name:   'getUserByUsername',
-        script: 'get-user-by-username.sql'
+        script: 'account-get-by-username.sql'
     },
     {
         name:   'getUserByUuid',
-        script: 'get-user-by-uuid.sql'
+        script: 'account-get-by-uuid.sql'
     },
 
     // Colors
     {
         name:   'getAllColors',
-        script: 'get-all-colors.sql'
+        script: 'color-get-all.sql'
     },
     {
         name:   'getColor',
-        script: 'get-color.sql'
+        script: 'color-get.sql'
     },
     {
         name:   'addColor',
-        script: 'add-color.sql'
+        script: 'color-add.sql'
     },
     {
         name:   'deleteColor',
-        script: 'delete-color.sql'
+        script: 'color-delete.sql'
     },
 
     // States
     {
         name:   'getAllStates',
-        script: 'get-all-states.sql'
+        script: 'state-get-all.sql'
     },
     {
         name:   'getState',
-        script: 'get-state.sql'
+        script: 'state-get.sql'
     },
 
     // Statuses
     {
         name:   'getAllStatuses',
-        script: 'get-all-statuses.sql'
+        script: 'status-get-all.sql'
     },
     {
         name:   'getStatus',
-        script: 'get-status.sql'
+        script: 'status-get.sql'
     },
     {
         name:   'addStatus',
-        script: 'add-status.sql'
+        script: 'status-add.sql'
     }
 ]
 
