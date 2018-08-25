@@ -94,18 +94,18 @@
 | ------ | ----------- | -------------------- |
 | id     | serial      | NOT NULL PRIMARY KEY |
 | name   | varchar(24) | NOT NULL UNIQUE      |
-| hex    | char(6)     | NOT NULL UNIQUE      |
+| code   | char(6)     | NOT NULL UNIQUE      |
 
 #### state
 
 | Column | Type        | Constraints          |
 | ------ | ----------- | -------------------- |
 | id     | serial      | NOT NULL PRIMARY KEY |
-| value  | varchar(32) | NOT NULL UNIQUE      |
+| name   | varchar(32) | NOT NULL UNIQUE      |
 
 #### status
 
 | Column | Type        | Constraints          |
 | ------ | ----------- | -------------------- |
 | id     | serial      | NOT NULL PRIMARY KEY |
-| value  | varchar(32) | NOT NULL UNIQUE      |
+| name   | varchar(32) | NOT NULL UNIQUE      |
