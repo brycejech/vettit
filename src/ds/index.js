@@ -3,6 +3,12 @@
 const db  = require('../db'),
       sql = require('./sql');
 
+
+/*
+    =====
+    USERS
+    =====
+*/
 async function registerUser(user){
 
     const vals = [
@@ -83,12 +89,130 @@ async function getUserByUuid(uuid){
     catch(e){ return e }
 }
 
+
+/*
+    ======
+    COLORS
+    ======
+*/
+async function getAllColors(){
+    try{
+        const result = await db.query(sql.getAllColors, []);
+
+        if(result.rowCount) return result.rows
+    }
+    catch(e){ return e }
+}
+
+async function getColor(id){
+    try{
+        const result = await db.query(sql.getColor, [id]);
+
+        if(result.rowCount) return result.rows[0]
+    }
+    catch(e){ return e }
+}
+
+async function addColor(name, code){
+    if(!(name && code)) return;
+
+    try{
+        const result = await db.query(sql.addColor, [name, code]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteColor(id){
+    try{
+        const result = await db.query(sql.deleteColor, [id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+
+/*
+    ======
+    STATES
+    ======
+*/
+async function getAllStates(){
+    try{
+        const result = await db.query(sql.getAllStates, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getState(id){
+    try{
+        const result = await db.query(sql.getState, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+
+/*
+    ========
+    STATUSES
+    ========
+*/
+async function getAllStatuses(){
+    try{
+        const result = await db.query(sql.getAllStatuses, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getStatus(id){
+    try{
+        const result = await db.query(sql.getStatus, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function addStatus(name){
+    try{
+        const result = await db.query(sql.addStatus, [name]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+
 const dataStore = {
+    // Users
     registerUser,
     userExists,
     getUserByEmail,
     getUserByUsername,
-    getUserByUuid
+    getUserByUuid,
+
+    // Colors
+    getAllColors,
+    getColor,
+    addColor,
+    deleteColor,
+
+    // States
+    getAllStates,
+    getState,
+
+    // Statuses
+    getAllStatuses,
+    getStatus,
+    addStatus
 }
 
 
