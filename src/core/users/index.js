@@ -41,6 +41,12 @@ async function register(obj){
     }
 }
 
+async function get(obj){
+    if(obj.hasOwnProperty('email')) return getByEmail(obj.email);
+    if(obj.hasOwnProperty('username')) return getByUsername(obj.username);
+    if(obj.hasOwnProperty('uuid')) return getByUuid(obj.uuid);
+}
+
 async function getByEmail(email){
     try{
         const result = await ds.getUserByEmail(email);
@@ -88,7 +94,5 @@ function _nonce(){
 
 module.exports = {
     register,
-    getByEmail,
-    getByUsername,
-    getByUuid
+    get
 }
