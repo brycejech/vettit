@@ -69,6 +69,28 @@ const queries = [
     {
         name:   'addStatus',
         script: 'status-add.sql'
+    },
+
+    // Tags
+    {
+        name:   'getAllTags',
+        script: 'tag-get-all.sql'
+    },
+    {
+        name:   'getTagById',
+        script: 'tag-get-by-id.sql'
+    },
+    {
+        name:   'getTagBySlug',
+        script: 'tag-get-by-slug.sql'
+    },
+    {
+        name:   'addTag',
+        script: 'tag-add.sql'
+    },
+    {
+        name:   'deleteTag',
+        script: 'tag-delete.sql'
     }
 ]
 

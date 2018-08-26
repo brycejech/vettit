@@ -191,7 +191,61 @@ async function addStatus(name){
 }
 
 
+/*
+    ====
+    TAGS
+    ====
+*/
+async function getAllTags(){
+    try{
+        const result = await db.query(sql.getAllTags, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getTagById(id){
+    try{
+        const result = await db.query(sql.getTagById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getTagBySlug(slug){
+    try{
+        const result = await db.query(sql.getTagBySlug, [slug]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function addTag(name, slug, color){
+    if(!(name && slug && color)) return;
+
+    try{
+        const result = await db.query(sql.addTag, [name, slug, color]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteTag(id){
+    try{
+        const result = await db.query(sql.deleteTag, [id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+
 const dataStore = {
+
     // Users
     registerUser,
     userExists,
@@ -212,8 +266,14 @@ const dataStore = {
     // Statuses
     getAllStatuses,
     getStatus,
-    addStatus
-}
+    addStatus,
 
+    // Tags
+    getAllTags,
+    getTagById,
+    getTagBySlug,
+    addTag,
+    deleteTag
+}
 
 module.exports = dataStore;
