@@ -35,6 +35,14 @@
 | author  | int                      | NOT NULL REFERENCES account(id)             |
 | created | timestamp with time zone | NOT NULL DEFAULT (now() at time zone 'utc') |
 
+#### post_tag
+
+| Column  | Type                     | Constraints                                 |
+| ------- | ------------------------ | ------------------------------------------- |
+| post_id | int                      | NOT NULL REFERENCES post(id)                |
+| tag_id  | int                      | NOT NULL REFERENCES tag(id)                 |
+| created | timestamp with time zone | NOT NULL DEFAULT (now() at time zone 'utc') |
+
 #### comment
 
 | Column      | Type                     | Constraints                        |
