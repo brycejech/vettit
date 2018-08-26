@@ -97,6 +97,16 @@ const queries = [
         script: 'tag-delete.sql'
     },
 
+    // Post Tags
+    {
+        name:   'postTagAdd',
+        script: 'post-tag-add.sql'
+    },
+    {
+        name:   'postTagDelete',
+        script: 'post-tag-delete.sql'
+    },
+
     // Channels
     {
         name:   'getAllChannels',

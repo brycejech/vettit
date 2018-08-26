@@ -286,6 +286,34 @@ async function deleteTag(id){
 
 
 /*
+    =========
+    POST TAGS
+    =========
+*/
+async function tagPost(post_id, tag_id){
+    if(!(post_id && tag_id)) return;
+
+    try{
+        const result = await db.query(sql.postTagAdd, [post_id, tag_id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function untagPost(post_id, tag_id){
+    if(!(post_id && tag_id)) return;
+
+    try{
+        const result = await db.query(sql.postTagDelete, [post_id, tag_id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+
+/*
     ========
     CHANNELS
     ========
