@@ -23,6 +23,13 @@ function User(obj){
 
 async function register(obj){
 
+    if(!(
+           obj.name
+        && obj.email
+        && obj.username
+        && obj.password
+    )){ return }
+
     const data = {
         name:     obj.name,
         email:    obj.email,

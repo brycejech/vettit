@@ -11,6 +11,14 @@ const db  = require('../db'),
 */
 async function registerUser(user){
 
+    if(!(
+           user.name
+        && user.email
+        && user.username
+        && user.password
+        && user.uuid
+    )){ return }
+
     const vals = [
         user.name,
         user.email,
@@ -396,7 +404,7 @@ async function addOrg(name, slug, uuid){
 
 async function deleteOrg(id){
     if(!id) return;
-    
+
     try{
         const result = await db.query(sql.deleteOrg, [id]);
 
