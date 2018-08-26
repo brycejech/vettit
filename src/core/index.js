@@ -9,6 +9,10 @@ const modules = [
     {
         name: 'users',
         path: './users'
+    },
+    {
+        name: 'utils',
+        path: './utils'
     }
 ];
 
