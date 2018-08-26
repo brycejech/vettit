@@ -113,6 +113,32 @@ const queries = [
     {
         name:   'deleteChannel',
         script: 'channel-delete.sql'
+    },
+
+    // Orgs
+    {
+        name:   'getAllOrgs',
+        script: 'org-get-all.sql'
+    },
+    {
+        name:   'getOrgById',
+        script: 'org-get-by-id.sql'
+    },
+    {
+        name:   'getOrgBySlug',
+        script: 'org-get-by-slug.sql'
+    },
+    {
+        name:   'getOrgByUuid',
+        script: 'org-get-by-uuid.sql'
+    },
+    {
+        name:   'addOrg',
+        script: 'org-add.sql'
+    },
+    {
+        name:   'deleteOrg',
+        script: 'org-delete.sql'
     }
 ];
 

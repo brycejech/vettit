@@ -297,6 +297,68 @@ async function deleteChannel(id){
 }
 
 
+/*
+    ====
+    ORGS
+    ====
+*/
+async function getAllOrgs(){
+    try{
+        const result = await db.query(sql.getAllOrgs, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getOrgById(id){
+    try{
+        const result = await db.query(sql.getOrgById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getOrgBySlug(slug){
+    try{
+        const result = await db.query(sql.getOrgBySlug, [slug]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getOrgByUuid(uuid){
+    try{
+        const result = await db.query(sql.getOrgByUuid, [uuid]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function addOrg(name, slug, uuid){
+    if(!(name && slug && uuid)) return;
+
+    try{
+        const result = await db.query(sql.addOrg, [name, slug, uuid]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteOrg(id){
+    try{
+        const result = await db.query(sql.deleteOrg, [id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+
 const dataStore = {
 
     // Users
@@ -333,7 +395,15 @@ const dataStore = {
     getChannelById,
     getChannelBySlug,
     addChannel,
-    deleteChannel
+    deleteChannel,
+
+    // Orgs
+    getAllOrgs,
+    getOrgById,
+    getOrgBySlug,
+    getOrgByUuid,
+    addOrg,
+    deleteOrg
 }
 
 module.exports = dataStore;
