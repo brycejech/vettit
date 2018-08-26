@@ -165,8 +165,12 @@ const queries = [
         script: 'post-get-by-id.sql'
     },
     {
-        name:   'postGetBySlug',
+        name:   'getPostBySlug',
         script: 'post-get-by-slug.sql'
+    },
+    {
+        name:   'getPostsByChannel',
+        script: 'post-get-by-channel.sql'
     },
     {
         name:   'addPost',

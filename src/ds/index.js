@@ -475,6 +475,17 @@ async function getPostBySlug(slug){
 
         if(result.rowCount) return result.rows[0];
     }
+    catch(e){ console.log(e); return e }
+}
+
+async function getPostsByChannel(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getPostsByChannel, [id]);
+
+        if(result.rowCount) return result.rows
+    }
     catch(e){ return e }
 }
 
@@ -540,7 +551,14 @@ const dataStore = {
     getOrgBySlug,
     getOrgByUuid,
     addOrg,
-    deleteOrg
+    deleteOrg,
+
+    // Posts
+    getAllPosts,
+    getPostsByChannel,
+    getPostById,
+    getPostBySlug,
+    addPost
 }
 
 module.exports = dataStore;

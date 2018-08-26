@@ -35,5 +35,5 @@ FROM
         ON c.id=p.channel
 
 WHERE
-    p.slug=$1
+    p.channel=$1
 ;
