@@ -442,6 +442,59 @@ async function deleteOrg(id){
 }
 
 
+/*
+    =====
+    POSTS
+    =====
+*/
+async function getAllPosts(){
+    try{
+        const result = await db.query(sql.getAllPosts, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getPostById(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getPostById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getPostBySlug(slug){
+    if(!slug) return;
+
+    try{
+        const result = await db.query(sql.getPostBySlug, [slug]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function addPost(title, slug, body, author, channel){
+    if(!(
+           title
+        && slug
+        && body
+        && author
+        && channel
+    )){ return }
+
+    try{
+        const result = await db.query(sql.addPost, [title, slug, body, author, channel]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
 const dataStore = {
 
     // Users
