@@ -63,6 +63,8 @@ async function userExists(obj){
 }
 
 async function getUserById(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getUserById, [id]);
 
@@ -72,6 +74,8 @@ async function getUserById(id){
 }
 
 async function getUserByEmail(email){
+    if(!email) return;
+
     try{
         const result = await db.query(sql.getUserByEmail, [email]);
 
@@ -81,6 +85,8 @@ async function getUserByEmail(email){
 }
 
 async function getUserByUsername(username){
+    if(!username) return;
+
     try{
         const result = await db.query(sql.getUserByUsername, [username]);
 
@@ -90,6 +96,8 @@ async function getUserByUsername(username){
 }
 
 async function getUserByUuid(uuid){
+    if(!uuid) return;
+
     try{
         const result = await db.query(sql.getUserByUuid, [uuid]);
 
@@ -114,6 +122,8 @@ async function getAllColors(){
 }
 
 async function getColor(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getColor, [id]);
 
@@ -134,6 +144,8 @@ async function addColor(name, code){
 }
 
 async function deleteColor(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.deleteColor, [id]);
 
@@ -158,6 +170,8 @@ async function getAllStates(){
 }
 
 async function getState(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getState, [id]);
 
@@ -182,6 +196,8 @@ async function getAllStatuses(){
 }
 
 async function getStatus(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getStatus, [id]);
 
@@ -191,6 +207,8 @@ async function getStatus(id){
 }
 
 async function addStatus(name){
+    if(!name) return;
+
     try{
         const result = await db.query(sql.addStatus, [name]);
 
@@ -215,6 +233,8 @@ async function getAllTags(){
 }
 
 async function getTagById(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getTagById, [id]);
 
@@ -224,6 +244,8 @@ async function getTagById(id){
 }
 
 async function getTagBySlug(slug){
+    if(!slug) return;
+
     try{
         const result = await db.query(sql.getTagBySlug, [slug]);
 
@@ -244,6 +266,8 @@ async function addTag(name, slug, color){
 }
 
 async function deleteTag(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.deleteTag, [id]);
 
@@ -268,6 +292,8 @@ async function getAllChannels(){
 }
 
 async function getChannelById(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getChannelById, [id]);
 
@@ -277,6 +303,8 @@ async function getChannelById(id){
 }
 
 async function getChannelBySlug(slug){
+    if(!slug) return;
+
     try{
         const result = await db.query(sql.getChannelBySlug, [slug]);
 
@@ -297,6 +325,8 @@ async function addChannel(name, slug, color){
 }
 
 async function deleteChannel(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.deleteChannel, [id]);
 
@@ -321,6 +351,8 @@ async function getAllOrgs(){
 }
 
 async function getOrgById(id){
+    if(!id) return;
+
     try{
         const result = await db.query(sql.getOrgById, [id]);
 
@@ -330,6 +362,8 @@ async function getOrgById(id){
 }
 
 async function getOrgBySlug(slug){
+    if(!slug) return;
+
     try{
         const result = await db.query(sql.getOrgBySlug, [slug]);
 
@@ -339,6 +373,8 @@ async function getOrgBySlug(slug){
 }
 
 async function getOrgByUuid(uuid){
+    if(!uuid) return;
+
     try{
         const result = await db.query(sql.getOrgByUuid, [uuid]);
 
@@ -359,6 +395,8 @@ async function addOrg(name, slug, uuid){
 }
 
 async function deleteOrg(id){
+    if(!id) return;
+    
     try{
         const result = await db.query(sql.deleteOrg, [id]);
 
