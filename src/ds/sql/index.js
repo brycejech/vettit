@@ -153,6 +153,24 @@ const queries = [
     {
         name:   'deleteOrg',
         script: 'org-delete.sql'
+    },
+
+    // Posts
+    {
+        name:   'getAllPosts',
+        script: 'post-get-all.sql'
+    },
+    {
+        name:   'getPostById',
+        script: 'post-get-by-id.sql'
+    },
+    {
+        name:   'postGetBySlug',
+        script: 'post-get-by-slug.sql'
+    },
+    {
+        name:   'addPost',
+        script: 'post-add.sql'
     }
 ];
 
