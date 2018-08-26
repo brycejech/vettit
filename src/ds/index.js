@@ -244,6 +244,59 @@ async function deleteTag(id){
 }
 
 
+/*
+    ========
+    CHANNELS
+    ========
+*/
+async function getAllChannels(){
+    try{
+        const result = await db.query(sql.getAllChannels, []);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+async function getChannelById(id){
+    try{
+        const result = await db.query(sql.getChannelById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getChannelBySlug(slug){
+    try{
+        const result = await db.query(sql.getChannelBySlug, [slug]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function addChannel(name, slug, color){
+    if(!(name && slug && color)) return;
+
+    try{
+        const result = await db.query(sql.addChannel, [name, slug, color]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteChannel(id){
+    try{
+        const result = await db.query(sql.deleteChannel, [id]);
+
+        return true;
+    }
+    catch(e){ return e }
+}
+
+
 const dataStore = {
 
     // Users
@@ -273,7 +326,14 @@ const dataStore = {
     getTagById,
     getTagBySlug,
     addTag,
-    deleteTag
+    deleteTag,
+
+    // Channels
+    getAllChannels,
+    getChannelById,
+    getChannelBySlug,
+    addChannel,
+    deleteChannel
 }
 
 module.exports = dataStore;

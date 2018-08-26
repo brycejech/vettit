@@ -91,8 +91,30 @@ const queries = [
     {
         name:   'deleteTag',
         script: 'tag-delete.sql'
+    },
+
+    // Channels
+    {
+        name:   'getAllChannels',
+        script: 'channel-get-all.sql'
+    },
+    {
+        name:   'getChannelById',
+        script: 'channel-get-by-id.sql'
+    },
+    {
+        name:   'getChannelBySlug',
+        script: 'channel-get-by-slug.sql'
+    },
+    {
+        name:   'addChannel',
+        script: 'channel-add.sql'
+    },
+    {
+        name:   'deleteChannel',
+        script: 'channel-delete.sql'
     }
-]
+];
 
 module.exports = {};
 
