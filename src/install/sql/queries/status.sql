@@ -13,8 +13,8 @@ INSERT INTO status
 (name)
 
 VALUES
-('Queued'),
 ('Open'),
+('Queued'),
 ('Waiting'),
 ('Pending Approval'),
 ('Rejected'),
