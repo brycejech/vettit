@@ -17,6 +17,10 @@ const queries = [
         script: 'account-exists-email.sql'
     },
     {
+        name:   'getUserById',
+        script: 'account-get-by-id.sql'
+    },
+    {
         name:   'getUserByEmail',
         script: 'account-get-by-email.sql'
     },

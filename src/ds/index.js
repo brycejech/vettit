@@ -62,6 +62,15 @@ async function userExists(obj){
     }
 }
 
+async function getUserById(id){
+    try{
+        const result = await db.query(sql.getUserById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
 async function getUserByEmail(email){
     try{
         const result = await db.query(sql.getUserByEmail, [email]);
@@ -364,6 +373,7 @@ const dataStore = {
     // Users
     registerUser,
     userExists,
+    getUserById,
     getUserByEmail,
     getUserByUsername,
     getUserByUuid,
