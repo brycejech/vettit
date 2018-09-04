@@ -32,6 +32,10 @@ const queries = [
         name:   'getUserByUuid',
         script: 'account-get-by-uuid.sql'
     },
+    {
+        name:   'getAllUsers',
+        script: 'account-get-all.sql'
+    },
 
     // Colors
     {
@@ -175,6 +179,10 @@ const queries = [
     {
         name:   'addPost',
         script: 'post-add.sql'
+    },
+    {
+        name:   'deletePost',
+        script: 'post-delete.sql'
     }
 ];
 
