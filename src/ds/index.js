@@ -114,6 +114,17 @@ async function getUserByUuid(uuid){
     catch(e){ return e }
 }
 
+async function getAllUsers(){
+    try{
+        const result = await db.query(sql.getAllUsers, []);
+
+        if(result.rowCount) return result.rows;
+
+        return [];
+    }
+    catch(e){ return e }
+}
+
 
 /*
     ======
@@ -125,6 +136,8 @@ async function getAllColors(){
         const result = await db.query(sql.getAllColors, []);
 
         if(result.rowCount) return result.rows
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -173,6 +186,8 @@ async function getAllStates(){
         const result = await db.query(sql.getAllStates, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -199,6 +214,8 @@ async function getAllStatuses(){
         const result = await db.query(sql.getAllStatuses, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -236,6 +253,8 @@ async function getAllTags(){
         const result = await db.query(sql.getAllTags, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -323,6 +342,8 @@ async function getAllChannels(){
         const result = await db.query(sql.getAllChannels, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -382,6 +403,8 @@ async function getAllOrgs(){
         const result = await db.query(sql.getAllOrgs, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -452,6 +475,8 @@ async function getAllPosts(){
         const result = await db.query(sql.getAllPosts, []);
 
         if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -484,7 +509,9 @@ async function getPostsByChannel(id){
     try{
         const result = await db.query(sql.getPostsByChannel, [id]);
 
-        if(result.rowCount) return result.rows
+        if(result.rowCount) return result.rows;
+
+        return [];
     }
     catch(e){ return e }
 }
@@ -506,6 +533,18 @@ async function addPost(title, slug, body, author, channel){
     catch(e){ return e }
 }
 
+async function deletePost(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.deletePost, [id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+
 const dataStore = {
 
     // Users
@@ -515,6 +554,7 @@ const dataStore = {
     getUserByEmail,
     getUserByUsername,
     getUserByUuid,
+    getAllUsers,
 
     // Colors
     getAllColors,
@@ -558,7 +598,8 @@ const dataStore = {
     getPostsByChannel,
     getPostById,
     getPostBySlug,
-    addPost
+    addPost,
+    deletePost
 }
 
 module.exports = dataStore;
