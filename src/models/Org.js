@@ -1,7 +1,7 @@
 'use strict';
 
-const uuid  = require('uuid/v4'),
-      utils = require('../utils');
+const uuid    = require('uuid/v4'),
+      slugify = require('../lib/slugify');
 
 const ds = require('../ds');
 
@@ -69,7 +69,7 @@ async function _getByUuid(uuid){
 async function add(name){
     if(!name) return;
 
-    const slug = utils.slugify(name);
+    const slug = slugify(name);
 
     try{
         const result = await ds.addOrg(name, slug, uuid());

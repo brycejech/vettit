@@ -1,6 +1,6 @@
 'use strict';
 
-const ds = require('../../ds');
+const ds = require('../ds');
 
 function Color(id, name, code){
     this.id   = id;
@@ -49,7 +49,7 @@ async function add(name, code){
     catch(e){ return e }
 }
 
-async function delete(id){
+async function remove(id){
     if(!id) return;
 
     try{
@@ -63,5 +63,6 @@ async function delete(id){
 
 module.exports = {
     all,
-    get
+    get,
+    remove
 }

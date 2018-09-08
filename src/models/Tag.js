@@ -1,7 +1,7 @@
 'use strict';
 
-const ds      = require('../../ds'),
-      slugify = require('../../lib/slugify');
+const ds      = require('../ds'),
+      slugify = require('../lib/slugify');
 
 
 function Tag(obj){

@@ -1,6 +1,6 @@
 'use strict';
 
-const ds = require('../../ds');
+const ds = require('../ds');
 
 
 function State(obj){
