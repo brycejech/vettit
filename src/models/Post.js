@@ -9,7 +9,7 @@ function Post(obj){
         && obj.title
         && obj.slug
         && obj.body
-        && obj.author_name
+        && obj.author
         && obj.author_id
         && obj.author_uuid
         && obj.channel
@@ -21,26 +21,54 @@ function Post(obj){
         && obj.created
     )) return;
 
-    this.id          = obj.id;
-    this.title       = obj.title;
-    this.slug        = obj.slug;
-    this.body        = obj.body;
-    this.author_name = obj.author_name;
-    this.author_id   = obj.author_id;
-    this.author_uuid = obj.author_uuid;
-    this.channel     = obj.channel;
-    this.channel_id  = obj.channel_id;
-    this.status      = obj.status;
-    this.status_id   = obj.status_id;
-    this.state       = obj.state;
-    this.state_id    = obj.state_id;
-    this.org         = obj.org;
-    this.created     = obj.created;
-    this.is_modified = obj.is_modified;
-    this.modified_by = obj.modified_by;
-    this.modified    = obj.modified;
+    this.id               = obj.id;
+    this.title            = obj.title;
+    this.slug             = obj.slug;
+    this.body             = obj.body;
+
+    const author = this.author = { };
+
+    author.name = obj.author;
+    author.id   = obj.author_id;
+    author.uuid = obj.author_uuid;
+
+
+    const channel = this.channel = { };
+
+    channel.id        = obj.channel_id;
+    channel.name      = obj.channel;
+    channel.color     = obj.channel_color;
+    channel.colorCode = obj.channel_color_code;
+    channel.colorId = obj.channel_color_id;
+
+
+    this.status           = obj.status;
+    this.status_id        = obj.status_id;
+
+    this.state            = obj.state;
+    this.state_id         = obj.state_id;
+
+    this.org              = obj.org;
+    this.created          = obj.created;
+    this.is_modified      = obj.is_modified;
+    this.modified_by      = obj.modified_by;
+    this.modified_by_id   = obj.modified_by_id;
+    this.modified         = obj.modified;
+
+    this.tags = obj.tags;
 
     return this;
+}
+
+Post.prototype.addTag = async function addTag(id){
+    if(!id) return;
+
+    try{
+        const result = await ds.tagPost(this.id, id);
+
+        return result;
+    }
+    catch(e){ return e }
 }
 
 
@@ -91,6 +119,17 @@ async function byChannel(id){
     catch(e){ return e }
 }
 
+async function byTag(id){
+    if(!id) return;
+
+    try{
+        const posts = await ds.getPostsByTag(id);
+
+        return posts.map(post => new Post(post));
+    }
+    catch(e){ return e }
+}
+
 async function add(obj){
     if(!(
         obj.title
@@ -135,6 +174,7 @@ module.exports = {
     all,
     get,
     byChannel,
+    byTag,
     add,
     remove
 }
