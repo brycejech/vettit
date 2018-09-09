@@ -558,6 +558,116 @@ async function deletePost(id){
 }
 
 
+/*
+    ========
+    COMMENTS
+    ========
+*/
+async function addComment(body, author, post_id){
+    if(!(
+           author
+        && body
+        && post_id
+    )) return;
+
+    try{
+        const result = await db.query(sql.addComment, [body, author, post_id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteComment(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.deleteComment, [id]);
+
+        return true;
+    }
+    catch(e){ return false }
+}
+
+async function getCommentById(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getCommentById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getCommentsByPost(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getCommentsByPost, [id]);
+
+        if(result.rowCount) return result.rows;
+
+        return [];
+    }
+    catch(e){ return e }
+}
+
+
+/*
+    =======
+    REPLIES
+    =======
+*/
+async function addReply(body, author, comment_id){
+    if(!(
+           body
+        && author
+        && comment_id
+    )) return;
+
+    try{
+        const result = await db.query(sql.addReply, [body, author, comment_id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function deleteReply(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.deleteReply, [id]);
+
+        return true;
+    }
+    catch(e){ return e }
+}
+
+async function getReplyById(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getReplyById, [id]);
+
+        if(result.rowCount) return result.rows[0];
+    }
+    catch(e){ return e }
+}
+
+async function getRepliesByCommentId(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getRepliesByCommentId, [id]);
+
+        if(result.rowCount) return result.rows;
+    }
+    catch(e){ return e }
+}
+
+
 const dataStore = {
 
     // Users
@@ -617,7 +727,19 @@ const dataStore = {
 
     // Post Tags
     tagPost,
-    untagPost
+    untagPost,
+
+    // Comments
+    getCommentById,
+    getCommentsByPost,
+    addComment,
+    deleteComment,
+
+    // Replies
+    getReplyById,
+    getRepliesByCommentId,
+    addReply,
+    deleteReply
 }
 
 module.exports = dataStore;

@@ -55,7 +55,6 @@
 | author      | int                      | NOT NULL REFERENCES account(id)    |
 | body        | text                     | NOT NULL                           |
 | post_id     | int                      | NOT NULL REFERENCES post(id)       |
-| parent_id   | int                      | REFERENCES comment(id)             |
 | modified_by | int                      | REFERENCES account(id)             |
 | created     | timestamp with time zone | DEFAULT (now() at time zone 'utc') |
 | modified    | timestamp with time zone |                                    |
@@ -66,6 +65,16 @@
 | ---------- | ------------------------ | ---------------------------------- |
 | comment_id | int                      | NOT NULL REFERENCES comment(id)    |
 | value      | int                      | NOT NULL                           |
+| author     | int                      | NOT NULL REFERENCES account(id)    |
+| created    | timestamp with time zone | DEFAULT (now() at time zone 'utc') |
+
+#### reply
+
+| Column     | Type                     | Constraints                        |
+| ---------- | ------------------------ | ---------------------------------- |
+| id         | serial                   | NOT NULL PRIMARY KEY               |
+| body       | text                     | NOT NULL                           |
+| comment_id | int                      | NOT NULL REFERENCES comment(id)    |
 | author     | int                      | NOT NULL REFERENCES account(id)    |
 | created    | timestamp with time zone | DEFAULT (now() at time zone 'utc') |
 

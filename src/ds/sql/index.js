@@ -187,6 +187,42 @@ const queries = [
     {
         name:   'deletePost',
         script: 'post-delete.sql'
+    },
+
+    // Comments
+    {
+        name:   'addComment',
+        script: 'comment-add.sql'
+    },
+    {
+        name:   'deleteComment',
+        script: 'comment-delete.sql'
+    },
+    {
+        name:   'getCommentById',
+        script: 'comment-get-by-id.sql'
+    },
+    {
+        name:   'getCommentsByPost',
+        script: 'comment-get-by-post.sql'
+    },
+
+    // Replies
+    {
+        name:   'addReply',
+        script: 'reply-add.sql'
+    },
+    {
+        name:   'deleteReply',
+        script: 'reply-delete.sql'
+    },
+    {
+        name:   'getRepliesByCommentId',
+        script: 'reply-get-by-comment-id.sql'
+    },
+    {
+        name:   'getReplyById',
+        script: 'reply-get-by-id.sql'
     }
 ];
 
