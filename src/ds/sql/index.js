@@ -177,6 +177,10 @@ const queries = [
         script: 'post-get-by-channel.sql'
     },
     {
+        name:   'getPostsByTag',
+        script: 'post-get-by-tag.sql'
+    },
+    {
         name:   'addPost',
         script: 'post-add.sql'
     },
