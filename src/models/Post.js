@@ -60,11 +60,22 @@ function Post(obj){
     return this;
 }
 
-Post.prototype.addTag = async function addTag(id){
+Post.prototype.tag = async function tag(id){
     if(!id) return;
 
     try{
         const result = await ds.tagPost(this.id, id);
+
+        return result;
+    }
+    catch(e){ return e }
+}
+
+Post.prototype.untag = async function untag(id){
+    if(!id) return;
+
+    try{
+        const result = await ds.untagPost(this.id, id);
 
         return result;
     }
