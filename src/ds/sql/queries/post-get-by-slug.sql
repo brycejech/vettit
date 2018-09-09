@@ -1,39 +1,92 @@
 
 SELECT
-    p.id,
-    p.title,
+	p.id,
+	p.title,
     p.slug,
     p.body,
-    a.name   as author_name,
-    a.id     as author_id,
-    a.uuid   as author_uuid,
-    c.name   as channel,
-    c.id     as channel_id,
-    st.name  as status,
-    st.id    as status_id,
-    s.name   as state,
-    s.id     as state_id,
     p.org,
-    p.is_modified,
-    p.modified_by,
+
+    c.name    AS channel,
+    p.channel AS channel_id,
+    co.name   AS channel_color,
+    co.code   AS channel_color_code,
+    co.id     AS channel_color_id,
+
+    st.name   AS status,
+    p.status  AS status_id,
+
+    s.name    AS state,
+    p.state   AS state_id,
+
+    a1.name   AS author,
+    p.author  AS author_id,
+    a1.uuid   AS author_uuid,
+
     p.created,
-    p.modified
+    p.is_modified,
+	a2.name AS modified_by,
+    p.modified_by AS modified_by_id,
+    p.modified,
+
+    -- Can't COALESCE here.
+    -- json_agg() will return '[null]' if no records, db seems to consider '[null]' as 'truthy'
+	CASE WHEN tags.post_id IS NULL THEN '[]'::json ELSE json_agg(tags) END AS tags
 
 FROM
-    post p
+	post p
 
-    JOIN account a
-        ON a.id=p.author
+    INNER JOIN channel c
+        ON c.id = p.channel
 
-    JOIN state s
-        ON s.id=p.state
+    INNER JOIN color co
+        ON co.id = c.color
 
-    JOIN status st
-        ON st.id=p.status
+    INNER JOIN status st
+        ON st.id = p.status
 
-    JOIN channel c
-        ON c.id=p.channel
+    INNER JOIN state s
+        ON s.id = p.state
 
-WHERE
-    p.slug=$1
-;
+	LEFT JOIN LATERAL
+			(
+				SELECT
+					pt.post_id,
+					t.name as tag_name,
+					pt.tag_id,
+					c.name as color,
+					t.color as color_id,
+					pt.created AS date_tagged
+
+				FROM
+					post_tag pt
+
+					JOIN tag t
+						ON t.id = pt.tag_id
+
+					JOIN color c
+						ON t.color = c.id
+
+				WHERE
+					pt.post_id = p.id
+
+			) tags on tags.post_id = p.id
+
+    INNER JOIN account a1
+        ON a1.id = p.author
+
+	LEFT OUTER JOIN account a2
+		ON a2.id = p.modified_by
+
+WHERE p.slug = $1
+
+GROUP BY
+    p.id,
+    c.name,
+    st.name,
+    s.name,
+    co.name,
+    co.id,
+	a1.name,
+    a1.uuid,
+	a2.name,
+	tags.post_id
