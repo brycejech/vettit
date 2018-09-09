@@ -315,7 +315,7 @@ async function tagPost(post_id, tag_id){
     try{
         const result = await db.query(sql.postTagAdd, [post_id, tag_id]);
 
-        if(result.rowCount) return result.rows[0];
+        return true;
     }
     catch(e){ return e }
 }
@@ -516,6 +516,19 @@ async function getPostsByChannel(id){
     catch(e){ return e }
 }
 
+async function getPostsByTag(id){
+    if(!id) return;
+
+    try{
+        const result = await db.query(sql.getPostsByTag, [id]);
+
+        if(result.rowCount) return result.rows;
+
+        return [];
+    }
+    catch(e){ return e }
+}
+
 async function addPost(title, slug, body, author, channel){
     if(!(
            title
@@ -596,10 +609,15 @@ const dataStore = {
     // Posts
     getAllPosts,
     getPostsByChannel,
+    getPostsByTag,
     getPostById,
     getPostBySlug,
     addPost,
-    deletePost
+    deletePost,
+
+    // Post Tags
+    tagPost,
+    untagPost
 }
 
 module.exports = dataStore;
