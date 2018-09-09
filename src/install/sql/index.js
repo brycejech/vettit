@@ -5,9 +5,10 @@ const fs = require('fs');
 
 console.log(__dirname);
 
-const account      = fs.readFileSync(__dirname + '/queries/account.sql',         'utf8'),
+const account      = fs.readFileSync(__dirname + '/queries/account.sql',      'utf8'),
       post         = fs.readFileSync(__dirname + '/queries/post.sql',         'utf8'),
       post_vote    = fs.readFileSync(__dirname + '/queries/post_vote.sql',    'utf8'),
+      post_tag     = fs.readFileSync(__dirname + '/queries/post_tag.sql',     'utf8'),
       comment      = fs.readFileSync(__dirname + '/queries/comment.sql',      'utf8'),
       comment_vote = fs.readFileSync(__dirname + '/queries/comment_vote.sql', 'utf8'),
       org          = fs.readFileSync(__dirname + '/queries/org.sql',          'utf8'),
@@ -54,6 +55,10 @@ module.exports = [
         name: 'Post Vote',
         query: post_vote
     },
+    {
+        name: 'Post Tag',
+        query: post_tag
+    }
     {
         name: 'Comment',
         query: comment
