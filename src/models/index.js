@@ -10,7 +10,8 @@ const models = Object.create(null);
     'State',
     'Status',
     'Tag',
-    'User'
+    'User',
+    'Comment'
 ].forEach(model => {
     models[model] = require(`${ __dirname }/${ model }`);
 })
