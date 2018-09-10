@@ -17,10 +17,10 @@ function Tag(obj){
     this.id         = obj.id;
     this.name       = obj.name;
     this.slug       = obj.slug;
-    this.color_name = obj.color_name;
-    this.color_code = obj.color_code;
+    this.color      = obj.color_name;
+    this.colorCode  = obj.color_code;
     this.org        = obj.org;
-    this.created    = new Date(obj.created);
+    this.created    = obj.created;
 
     return this;
 }
