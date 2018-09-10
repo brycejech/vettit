@@ -51,11 +51,12 @@ FROM
 			(
 				SELECT
 					pt.post_id,
-					t.name as tag_name,
+					t.name       AS tag_name,
 					pt.tag_id,
-					c.name as color,
-					t.color as color_id,
-					pt.created AS date_tagged
+					c.name       AS color,
+					t.color      AS color_id,
+                    c.code       AS color_code,
+					pt.created   AS date_tagged
 
 				FROM
 					post_tag pt
@@ -69,7 +70,7 @@ FROM
 				WHERE
 					pt.post_id = p.id
 
-			) tags on tags.post_id = p.id
+			) tags ON tags.post_id = p.id
 
     INNER JOIN account a1
         ON a1.id = p.author

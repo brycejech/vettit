@@ -39,20 +39,20 @@ function Post(obj){
     channel.name      = obj.channel;
     channel.color     = obj.channel_color;
     channel.colorCode = obj.channel_color_code;
-    channel.colorId = obj.channel_color_id;
+    channel.colorId   = obj.channel_color_id;
 
 
     this.status           = obj.status;
-    this.status_id        = obj.status_id;
+    this.statusId         = obj.status_id;
 
     this.state            = obj.state;
-    this.state_id         = obj.state_id;
+    this.stateId          = obj.state_id;
 
     this.org              = obj.org;
     this.created          = obj.created;
-    this.is_modified      = obj.is_modified;
-    this.modified_by      = obj.modified_by;
-    this.modified_by_id   = obj.modified_by_id;
+    this.modified         = obj.is_modified;
+    this.modifiedBy       = obj.modified_by;
+    this.modifiedById     = obj.modified_by_id;
     this.modified         = obj.modified;
 
     this.tags = obj.tags;
