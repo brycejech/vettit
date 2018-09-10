@@ -23,7 +23,7 @@ function Comment(obj){
     author.uuid  = obj.author_uuid;
     author.name  = obj.author;
 
-    this.replies    = obj.replies.map(reply => new Reply(reply));
+    this.replies = obj.replies.map(reply => new Reply(reply));
 
     return this;
 }
