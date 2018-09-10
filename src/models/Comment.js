@@ -12,15 +12,40 @@ function Comment(obj){
     )) return;
 
     this.id         = obj.id;
-    this.author     = obj.author;
-    this.authorId   = obj.author_id
     this.body       = obj.body;
     this.postId     = obj.post_id;
     this.created    = obj.created;
     this.modfied    = obj.modified;
     this.modifiedBy = obj.modified_by;
 
+    const author = this.author = { };
+    author.id    = obj.author_id;
+    author.uuid  = obj.author_uuid;
+    author.name  = obj.author;
+
+    this.replies    = obj.replies.map(reply => new Reply(reply));
+
     return this;
+}
+
+function Reply(obj){
+    if(!(
+           obj.id
+        && obj.body
+        && obj.comment_id
+        && obj.created
+        && obj.author_id
+    )) return;
+
+    this.id        = obj.id;
+    this.commentId = obj.comment_id;
+    this.body      = obj.body;
+    this.created   = obj.created;
+
+    const author = this.author = { };
+    author.id    = obj.author_id;
+    author.uuid  = obj.author_uuid;
+    author.name  = obj.author;
 }
 
 
