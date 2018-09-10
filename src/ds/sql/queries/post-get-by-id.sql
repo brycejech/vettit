@@ -24,7 +24,7 @@ SELECT
 
     p.created,
     p.is_modified,
-	a2.name AS modified_by,
+	a2.name       AS modified_by,
     p.modified_by AS modified_by_id,
     p.modified,
 
@@ -51,11 +51,11 @@ FROM
 			(
 				SELECT
 					pt.post_id,
-					t.name as tag_name,
+					t.name      AS tag_name,
 					pt.tag_id,
-					c.name as color,
-					t.color as color_id,
-					pt.created AS date_tagged
+					c.name      AS color,
+					t.color     AS color_id,
+					pt.created  AS date_tagged
 
 				FROM
 					post_tag pt
